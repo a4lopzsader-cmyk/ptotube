@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PROTUBE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Polyfill for libraries that expect process.env.NODE_ENV
+      window.process = { env: { NODE_ENV: 'development' } };
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0f0f0f;
+        color: white;
+      }
+      /* Custom scrollbar for dark theme */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #444; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #666; 
+      }
+
+      /* Custom Range Slider for Video Player */
+      .video-range {
+        -webkit-appearance: none;
+        background: transparent;
+        cursor: pointer;
+        width: 100%;
+        height: 4px;
+        position: relative;
+        z-index: 10;
+      }
+      
+      /* Track */
+      .video-range::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 4px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        transition: height 0.1s;
+      }
+      
+      .video-range:hover::-webkit-slider-runnable-track {
+        height: 6px;
+      }
+
+      /* Thumb */
+      .video-range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        background: #ff0000;
+        cursor: pointer;
+        margin-top: -4px; /* Align thumb vertically */
+        transform: scale(0); /* Hide by default */
+        transition: transform 0.1s;
+      }
+
+      /* Show thumb on hover group */
+      .group:hover .video-range::-webkit-slider-thumb {
+        transform: scale(1);
+      }
+      
+      .video-range:hover::-webkit-slider-thumb {
+         transform: scale(1.2);
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.2s ease-out forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?deps=react@18.3.1",
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1",
+    "react-dom": "https://esm.sh/react-dom@18.3.1?deps=react@18.3.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
